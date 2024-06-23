@@ -26,8 +26,19 @@ padding: 10px;
   display: inline-block;
   padding: 10px;
   background-color: rgb(63, 169, 255);
+  margin-right: 10px;
+  border-radius: 5px;
   color: white;
 }
+
+.headerMenu li.pink{
+  background-color: #ffb3ca;
+  color: #333;
+  border: 2px solid #ff3f78;
+  display: flex;
+}
+
+
 
 .App{
   margin:auto;
@@ -43,5 +54,8 @@ padding: 10px;
 
 .pageContent{
   padding: 30px;
-  background-color: rgb(184, 220, 221)
+}
+
+.starIcon{
+  display: inline-block!important;
 }

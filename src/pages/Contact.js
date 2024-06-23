@@ -1,8 +1,11 @@
+import { Heading } from '@chakra-ui/react'
 import React from 'react'
 
 function Contact() {
   return (
-    <div>Contact</div>
+    <div>
+        <Heading as="h1">Contact</Heading>
+    </div>
   )
 }
 
