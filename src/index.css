@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.headerArea{
+  background-color: cadetblue;
+  color: white;
+}
+
+.headerMenu{
+background-color: rgb(231, 231, 231);
+padding: 10px;
+}
+
+.headerMenu li{
+  display: inline-block;
+  padding: 10px;
+  background-color: rgb(63, 169, 255);
+  color: white;
+}
+
+.App{
+  margin:auto;
+  width:90%
+}
+
+.footerArea{
+  padding: 20px;
+  background-color: #333;
+  text-align: center;
+  color: white;
+}
+
+.pageContent{
+  padding: 30px;
+  background-color: rgb(184, 220, 221)
+}
