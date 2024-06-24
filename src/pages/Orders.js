@@ -6,10 +6,16 @@ import { Avatar, List } from "antd";
 import { Link } from "react-router-dom";
 
 function Orders() {
+  const truncate = (input) => {
+    if (input) {
+      return input.length > 20 ? `${input.substring(0, 20)}...` : input;
+    }
+  };
+
   const orders = useSelector(ordersSelector);
 
   return (
-    (<div>
+    <div>
       <Heading mb="30px">Orders</Heading>
       {orders && orders.length <= 0 && (
         <Text mb="30px" textAlign="center">
@@ -18,70 +24,51 @@ function Orders() {
       )}
       {orders && orders.length > 0 && (
         <List
+        header={<div style={{display:"flex"}}>
+        <div className="columnTitle">Date / Name / Address / Products / Total price / Details</div>
+        </div>}
           className="demo-loadmore-list"
           // loading={initLoading}
           itemLayout="horizontal"
           dataSource={orders}
           renderItem={(item) => (
-            <List.Item
-              actions={[
-                <Link to={`/orders/${item.id}`}>
-                  
-                  <button style={{ color: "#333" }} key="product-item-clear">
-                    Order details
-                  </button>
-                </Link>,
-              ]}
-            >
-              <List.Item.Meta
-                style={{ alignItems: "center" }}
-                avatar={
-                  <Avatar
-                    style={{
-                      borderRadius: "10px",
-                      border: "1px solid gray",
-                      padding: "5px",
-                      height: "auto",
-                      width: "70px",
-                    }}
-                    src={item.image}
-                  />
-                }
-                title={
-                  <Link style={{ fontSize: "16px" }} to={`/product/${item.id}`}>
-                    {item.title}
-                  </Link>
-                }
-              />
-              <div style={{ fontWeight: "bold" }}>${item.price}</div>
-            </List.Item>
+            <Link className="orderListItem" to={`/orders/${item.id}`}>
+              <List.Item
+                actions={[
+                  <Link to={`/orders/${item.id}`}>
+                    <button key="product-item-clear">Order details</button>
+                  </Link>,
+                ]}
+              >
+                <List.Item.Meta
+                
+                  style={{ alignItems: "center" }}
+                  title={item.date}
+                />
+                <List.Item.Meta
+                  style={{ alignItems: "center" }}
+                  title={truncate(item.name)}
+                />
+
+                <List.Item.Meta
+                  style={{ alignItems: "center" }}
+                  title={truncate(item.address)}
+                />
+                <List.Item.Meta
+                  style={{ alignItems: "center" }}
+                  title={item.products.length}
+                />
+                <List.Item.Meta
+                  style={{ alignItems: "center", fontWeight: "bold" }}
+                  title={"$" + item.totalPrice}
+                />
+              </List.Item>
+            </Link>
           )}
         />
       )}
-    </div>)
+    </div>
   );
 }
 
 export default Orders;
-
-{
-  /* orders.map((order)=> (
-                <li>
-
-                <Text>Name:{order.name}</Text>
-                <Text>Address:{order.address}</Text>
-                <Text>Date:{order.date}</Text>
-                 <Text>Total:{order.totalPrice}</Text>
-                 <Text>Products: {order.products.map((product)=> (
-
-                    <div>
-                    -----{product.title}
-                    <img width="50px" src={product.image}/>
-                    </div>
-
-                 ))}</Text>
-                
-
-                </li>
-            )) */
-}

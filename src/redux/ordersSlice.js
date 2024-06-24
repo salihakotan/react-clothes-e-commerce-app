@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { message } from "antd";
 import uniqid from "uniqid"
 
-export const ordersSelector = (state) => state.orders.items;
+
 
 const savedOrders = JSON.parse(localStorage.getItem("orders"))
 
 
+export const ordersSelector = (state) => state.orders.items;
 
 
 

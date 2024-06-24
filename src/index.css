@@ -59,3 +59,25 @@ padding: 10px;
 .starIcon{
   display: inline-block!important;
 }
+
+.orderListItem li{
+  padding: 10px!important;
+}
+
+.orderListItem:hover li{
+    background-color: #dfdfdf;
+}
+
+.columnTitle{
+  font-weight: bold;
+}
+.productsGridItem{
+  display: flex;
+  align-items: center;
+}
+
+.orderInfoField{
+  font-size: 18px;
+  border: 1px solid #333;
+}
+
