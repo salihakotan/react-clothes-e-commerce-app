@@ -11,6 +11,7 @@ import {
   Image,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
@@ -18,8 +19,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToFavorites, favoritesSelector, removeFromFavorites } from "../redux/favoritesSlice";
 import { addToBasket, basketSelector, removeFromBasket } from "../redux/basketSlice";
+import OrderPanel from "./OrderPanel";
 
 function ProductItem({ product }) {
+
+  
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const initialRef = React.useRef(null)
+  const finalRef = React.useRef(null)
+
 
     const [isFavorite,setIsFavorite] = useState(false)
     const [isInBasket,setIsInBasket] = useState(false)
@@ -34,10 +43,8 @@ function ProductItem({ product }) {
         const item = favorites.find((fav)=> fav.id === product.id)
         if(item){
             setIsFavorite(true)
-            console.log("this is favs")
         }else {
             setIsFavorite(false)
-            console.log("this not favs")
         }
     },[favorites,product])
 
@@ -47,10 +54,8 @@ function ProductItem({ product }) {
         const item = basket.find((_item)=> _item.id === product.id)
         if(item){
             setIsInBasket(true)
-            console.log("this is in basket")
         }else {
             setIsInBasket(false)
-            console.log("this is not basket")
         }
     },[basket,product])
 
@@ -127,7 +132,7 @@ function ProductItem({ product }) {
           <CardFooter>
             <ButtonGroup spacing="1.5">
              
-              <Button variant="solid" colorScheme="blue">
+              <Button onClick={onOpen} variant="solid" colorScheme="blue">
                 Buy now
               </Button>
               <Button onClick={handleClickBasketButton} variant={`${isInBasket ? "solid" : "outline"}`} colorScheme="blue">
@@ -145,6 +150,8 @@ function ProductItem({ product }) {
             </ButtonGroup>
           </CardFooter>
         </Card>
+        <OrderPanel products={[product]} total={product.price} finalRef={finalRef} initialRef={initialRef} isOpen={isOpen} onClose={onClose} />
+
       </GridItem>
     </div>
   );

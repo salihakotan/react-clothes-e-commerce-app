@@ -30,6 +30,7 @@ function Products() {
     <div style={{width:"70%"}}>
       <Heading as="h1">Products</Heading>
 
+
       {status === "loading" && <div>Loading...</div>}
 
       <Grid mt="40px" templateColumns="repeat(4, 1fr)" gap={6}>

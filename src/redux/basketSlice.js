@@ -15,7 +15,6 @@ export const basketSlice = createSlice({
         addToBasket: (state, action) => {
             state.items.push(action.payload);
             localStorage.setItem("basket",JSON.stringify(state.items))
-            console.log("payl", action.payload);
           },
           removeFromBasket: (state, action) => {
             const index = state.items.findIndex((item)=> item.id === action.payload.id);
@@ -23,15 +22,20 @@ export const basketSlice = createSlice({
               // only splice array when item is found
               state.items.splice(index, 1); // 2nd parameter means remove one item only
               localStorage.setItem("basket",JSON.stringify(state.items))
-              console.log("finded index", action.payload);
-            }}
+            }},
+           clearBasket: (state, action) => {
+              
+                // only splice array when item is found
+                state.items.splice(0, state.items.length); // 2nd parameter means remove one item only
+                localStorage.setItem("basket",JSON.stringify(state.items))
+              },
     },
     extraReducers:(builder)=>{
 
     }
 })
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
+export const { addToBasket, removeFromBasket, clearBasket } = basketSlice.actions;
 
 
 export default basketSlice.reducer

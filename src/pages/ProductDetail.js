@@ -14,12 +14,20 @@ import {
   selectProductError,
   selectProductStatus,
 } from "../redux/productsSlice";
-import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Image, Text, useDisclosure } from "@chakra-ui/react";
 import { addToFavorites, favoritesSelector, removeFromFavorites } from "../redux/favoritesSlice";
 import { addToBasket, basketSelector, removeFromBasket } from "../redux/basketSlice";
 import OrderPanel from "../components/OrderPanel";
 
 function ProductDetail() {
+
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const initialRef = React.useRef(null)
+  const finalRef = React.useRef(null)
+
+
   const product = useSelector(selectProduct);
   const productStatus = useSelector(selectProductStatus);
   const productError = useSelector(selectProductError);
@@ -47,10 +55,8 @@ function ProductDetail() {
     const item = favorites.find((fav)=> fav.id === product.id)
     if(item){
         setIsFavorite(true)
-        console.log("this is favs")
     }else {
         setIsFavorite(false)
-        console.log("this not favs")
     }
 },[favorites,product])
 
@@ -60,10 +66,8 @@ useEffect(()=> {
     const item = basket.find((_item)=> _item.id === product.id)
     if(item){
         setIsInBasket(true)
-        console.log("this is in basket")
     }else {
         setIsInBasket(false)
-        console.log("this is not basket")
     }
 },[basket,product])
 
@@ -105,10 +109,8 @@ useEffect(()=> {
 
 
   const handleClickOrder = (product) => {
-    <>
-       { console.log("buy")}
-       
-    </>
+   console.log("buy")
+       onOpen()
   }
 
 
@@ -200,7 +202,7 @@ useEffect(()=> {
                 <span style={{ color: "blue" }}>{product.category}</span>
               </Text>
 
-              <OrderPanel products={[product]} total={product.price} />
+              <OrderPanel products={[product]} total={product.price} finalRef={finalRef} initialRef={initialRef} isOpen={isOpen} onClose={onClose} />
          
             </Box>
           </Box>

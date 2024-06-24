@@ -15,7 +15,6 @@ export const favoritesSlice = createSlice({
     addToFavorites: (state, action) => {
       state.items.push(action.payload);
       localStorage.setItem("favorites",JSON.stringify(state.items))
-      console.log("payl", action.payload);
     },
     removeFromFavorites: (state, action) => {
       const index = state.items.findIndex((item)=> item.id === action.payload.id);
@@ -23,7 +22,6 @@ export const favoritesSlice = createSlice({
         // only splice array when item is found
         state.items.splice(index, 1); // 2nd parameter means remove one item only
         localStorage.setItem("favorites",JSON.stringify(state.items))
-        console.log("finded index", action.payload);
       }
      
     },
