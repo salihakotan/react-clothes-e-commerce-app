@@ -19,18 +19,18 @@ function OrderDetail() {
         <Heading mb="30px" as="h1">Order detail</Heading>
 
 
-        <Text className='orderInfoField'><b>Date:</b>{order.date}</Text>
-        <Text className='orderInfoField'><b>Full name:</b> {order.name}</Text>
+        <Text className='orderInfoField'><b>Date: </b>{order.date}</Text>
+        <Text className='orderInfoField'><b>Full name: </b> {order.name}</Text>
         <Text className='orderInfoField'><b>Address: </b>{order.address}</Text>
-        <div className='orderInfoField'>Products:
+        <div className='orderInfoField'><b>Products:</b>
 
 
         {order.products && (
             <Grid>
                 {order.products.map((product,i)=> {
-                   return <GridItem className='productsGridItem' key={i}>
-                   <Image width="80px" src={product.image}/>
-                        <Text>{product.id}</Text>
+                   return <GridItem mt="15px" gap={5} templateColumns="repeat(4, 1fr)" className='productsGridItem orderInfoField' key={i}>
+                   <Image width="50px" src={product.image}/>
+                        <Text >{product.id}</Text>
                       
 
                         <Text>{product.title}</Text>

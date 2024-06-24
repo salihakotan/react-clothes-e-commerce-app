@@ -78,6 +78,7 @@ padding: 10px;
 
 .orderInfoField{
   font-size: 18px;
-  border: 1px solid #333;
+  border: 1px solid #c9c9c9;
+  padding: 10px;
+  margin-bottom: 15px;
 }
-

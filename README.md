@@ -19,3 +19,15 @@ This project assignment has been prepared for the 'Kodluyoruz' Frontend course. 
 ---
 
 ![preview](prev4.png)
+
+---
+
+![preview](prev5.png)
+
+---
+
+![preview](prev6.png)
+
+---
+
+![preview](prev7.png)
