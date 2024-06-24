@@ -27,7 +27,7 @@ function Products() {
   }
 
   return (
-    <div>
+    <div style={{width:"70%"}}>
       <Heading as="h1">Products</Heading>
 
       {status === "loading" && <div>Loading...</div>}
