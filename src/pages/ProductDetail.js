@@ -17,6 +17,7 @@ import {
 import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
 import { addToFavorites, favoritesSelector, removeFromFavorites } from "../redux/favoritesSlice";
 import { addToBasket, basketSelector, removeFromBasket } from "../redux/basketSlice";
+import OrderPanel from "../components/OrderPanel";
 
 function ProductDetail() {
   const product = useSelector(selectProduct);
@@ -103,6 +104,14 @@ useEffect(()=> {
   }
 
 
+  const handleClickOrder = (product) => {
+    <>
+       { console.log("buy")}
+       
+    </>
+  }
+
+
   return (
     <>
        <Link to="/">
@@ -182,14 +191,16 @@ useEffect(()=> {
                     )
                   }
                 </Button>
-                <Button ml="20px" colorScheme="blue">
+                <Button onClick={()=>handleClickOrder(product)} ml="20px" colorScheme="blue">
                   Buy now
                 </Button>
               </Box>
               <Text mt="20px" fontWeight="bold">
-                Category:{" "}
+                Category:
                 <span style={{ color: "blue" }}>{product.category}</span>
               </Text>
+
+              <OrderPanel products={[product]} total={product.price} />
          
             </Box>
           </Box>

@@ -1,4 +1,4 @@
-import { Container, Heading } from '@chakra-ui/react'
+import { Box, Button, Container, Heading } from '@chakra-ui/react'
 import React from 'react'
 import { AiFillHeart, AiFillShop, AiFillShopping } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
@@ -6,9 +6,14 @@ import { Link } from 'react-router-dom'
 function Header() {
   return (
     <div className='headerArea' m="10px">
+      <Box display="flex" justifyContent="space-between" textAlign="center" alignItems="center">
       <Heading p="30px" as="h1">Clothes e-Commerce</Heading>
-
-
+     
+      <Link to="/orders">
+      <Button mr="20px">My Orders</Button>
+      </Link>
+      
+      </Box>
     <nav>
       <ul className='headerMenu'>
         <li>

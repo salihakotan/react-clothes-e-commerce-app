@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Favorites from "./pages/Favorites";
 import Basket from "./pages/Basket";
 import { Container } from "@chakra-ui/react";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

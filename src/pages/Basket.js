@@ -24,7 +24,14 @@ function Basket() {
             dispatch(removeFromBasket(product))
             console.log("removed from basket")
         }
-           
+        
+    }
+
+    const handleClickClearBasket = () => {
+
+    }
+
+    const handleClickOrder = () => {
         
     }
 
@@ -67,10 +74,10 @@ function Basket() {
       )}
       <Box m="30px 0 30px 0" textAlign="right">
       
-        <Button mr="20px" variant="outline" colorScheme="red">
+        <Button onClick={handleClickClearBasket} mr="20px" variant="outline" colorScheme="red">
           Clear basket
         </Button>
-        <Button colorScheme="green">Order</Button>
+        <Button onClick={handleClickOrder} colorScheme="green">Order</Button>
       </Box>
     </div>)
   );
