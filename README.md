@@ -2,7 +2,7 @@
 
 This project assignment has been prepared for the 'Kodluyoruz' Frontend course. An e-commerce project where we can shop for clothes.
 
-**DEMO:**
+**DEMO:** https://sk-react-redux-clothes-e-commerce-app.netlify.app/
 
 ---
 
